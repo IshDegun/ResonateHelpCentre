@@ -1,0 +1,30 @@
+<html>
+  <body>
+  <form style="text-align: center;">
+      <input style="height: 36px; width: 36px;" type="checkbox"   name="okay" value="ok" onclick="onClick()">
+       <br/>
+       <h1 style="font-size: 36px; color: #FFFFFF;">Press the checkbox please</h1>
+  </input>
+  </form>
+  <script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js"></script>
+  <script type="text/javascript">
+    microsoftTeams.initialize();
+    microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
+        var btn = document.getElementsByName("okay");
+        if (btn[0].checked) {
+            microsoftTeams.settings.setSettings({
+                 entityId: "ResonateHelpCentre123",
+                 contentUrl: "https://resonateucc.sharepoint.com/sites/help",
+                 suggestedDisplayName: "ResonateHelpCentre",
+                 websiteUrl: "https://resonateucc.sharepoint.com/sites/help",
+                 removeUrl: "https://resonateucc.sharepoint.com/sites/help",
+             });
+         }
+         saveEvent.notifySuccess();
+    });
+    function onClick() {
+        microsoftTeams.settings.setValidityState(true);
+    }
+  </script>
+  </body>
+</html>
